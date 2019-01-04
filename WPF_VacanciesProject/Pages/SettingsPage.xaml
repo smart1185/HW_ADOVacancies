@@ -1,0 +1,76 @@
+﻿<Page x:Class="WPF_VacanciesProject.Pages.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPF_VacanciesProject.Pages"
+      mc:Ignorable="d" 
+     
+      Title="SettingsPage">
+
+    <Grid>
+        <TabControl Background="AntiqueWhite">
+            <TabItem Header="Статистическая информация" Foreground="Brown" Width="200" Height="30">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="55"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <WrapPanel Grid.Row="0" Margin="10">
+                        <Label x:Name="lblInfo" Width="200" Margin="5"></Label>
+                        <ComboBox x:Name="cbCategory" Width="200" DisplayMemberPath="CategoryName" Margin="5" Height="30" VerticalAlignment="Center" SelectionChanged="cbCategory_SelectionChanged"></ComboBox>
+                    </WrapPanel>
+
+                    <WrapPanel Grid.Row="1" HorizontalAlignment="Left" Margin="10">
+                        <TextBlock x:Name="tbxFirst" Text="В таблице  " FontSize="24"></TextBlock>
+                        <TextBlock x:Name="tbxSecond" Width="200" Text="________" FontSize="24"></TextBlock>
+                        <TextBlock x:Name="tbxThird" Width="50" Text="0" FontSize="24"></TextBlock>
+                        <TextBlock x:Name="tbxForth" Text=" записей" FontSize="24"></TextBlock>
+                    </WrapPanel>
+                    <TextBox Grid.Row="2" x:Name="tbxError" Width="300" Height="100" Margin="10"></TextBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Данные настройки" Foreground="Brown" Width="200" Height="30">
+                <StackPanel Orientation="Vertical" x:Name="spAppSet">
+                    <Label Margin="20" FontSize="24">PageSettings</Label>
+                    <WrapPanel>
+                        <WrapPanel Orientation="Horizontal" Margin="20 0 20 20">
+                            <Label Content="Сервер БД" Width="150"></Label>
+                            <TextBox Height="20" Width="200" x:Name="tbxDataSource" Text="{Binding Path=DataSource}"></TextBox>
+                        </WrapPanel>
+
+                        <WrapPanel Orientation="Horizontal" Margin="20 0 20 20">
+                            <Label Content="Имя БД" Width="150"></Label>
+                            <TextBox Height="20" Width="150" x:Name="tbxBDName" Text="{Binding Path=DatabaseName}"></TextBox>
+                        </WrapPanel>
+                    </WrapPanel>
+                    <WrapPanel>
+                        <WrapPanel Orientation="Horizontal" Margin="20 0 20 20">
+                            <Label Content="Имя пользователя" Width="150"></Label>
+                            <TextBox Height="20" Width="200" x:Name="tbxUserId" Text="{Binding Path=UserId}"></TextBox>
+                        </WrapPanel>
+
+                        <WrapPanel Orientation="Horizontal" Margin="20 0 20 20">
+                            <Label Content="Пароль" Width="150"></Label>
+                            <TextBox Height="20" Width="150" x:Name="tbxUserPassword" Text="{Binding Path=UserPassword}"></TextBox>
+                        </WrapPanel>
+                    </WrapPanel>   
+                    <WrapPanel Orientation="Horizontal" Margin="20 0 20 20">
+                        <Label Content="" Width="150"></Label>
+                        <Button Height="20" Width="100" x:Name="btnSave" Content="Сохранить" Click="BtnSave_Click"></Button>
+                        <Label x:Name="lblConnectionString" Width="460" Background="LightGray" Margin="20 0 0 0" Content="{Binding Path=ConnectionString}"></Label>
+                    </WrapPanel>
+
+                    <GroupBox Header="Путь к серверу с файлом" Padding="20" Margin="20">
+                        <WrapPanel Orientation="Horizontal">
+                            <TextBox x:Name="PathToFile" Height="20" Width="300" Text="{Binding Path=PathToFile}"></TextBox>
+                        </WrapPanel>
+                    </GroupBox>
+
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Page>

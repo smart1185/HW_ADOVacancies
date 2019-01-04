@@ -1,0 +1,68 @@
+﻿<Page x:Class="WPF_VacanciesProject.Pages.VacanciesCategoryList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPF_VacanciesProject.Pages"
+      mc:Ignorable="d" 
+     
+      Title="VacanciesCategoryList">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>           
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>            
+        </Grid.ColumnDefinitions>
+       
+        <ListBox Grid.Row="1" Grid.RowSpan="2" Grid.Column="1"
+                 x:Name="lbCategoryList"                 
+                 FontSize="16"
+                 Background="AntiqueWhite"
+                 DisplayMemberPath="CategoryName"
+                 SelectionChanged="lbCategoryList_SelectionChanged"
+                 SelectedIndex="0"
+                 ></ListBox>
+        
+        <Grid  Grid.Row="1"  Grid.RowSpan="2" Grid.Column="2" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"></ColumnDefinition>
+                <ColumnDefinition Width="500"></ColumnDefinition>
+                <ColumnDefinition Width="30"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
+                <RowDefinition  Height="50"></RowDefinition>
+                <RowDefinition Height="20"></RowDefinition>
+                <RowDefinition  Height="50"></RowDefinition>
+                <RowDefinition Height="20"></RowDefinition>
+                <RowDefinition  Height="50"></RowDefinition>
+                <RowDefinition Height="150"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <TextBox Grid.Row="2" Grid.Column="1" x:Name="tbxName" Height="50" Padding="8" Width="200" Margin="10 0 0 0" Text="{Binding ElementName=lbCategoryList, Path=SelectedValue.CategoryName, Mode=OneWay}">
+            </TextBox>
+
+            <TextBox Grid.Row="4" Grid.Column="1" x:Name="tbxLink" Padding="8" Height="50" Width="350" Margin="10 0 0 0" Text="{Binding ElementName=lbCategoryList, Path=SelectedValue.CategoryLink, Mode=OneWay}">
+            </TextBox>
+
+            <Button x:Name="bntSave"                     
+                    Padding="5"
+                    Width="180"
+                    Grid.Row="6" 
+                    Grid.Column="1"                    
+                    Content="Сохранить в базу данных"
+                    Margin="0 0 0 20"
+                    Click="bntSave_Click"></Button>
+
+            <TextBox x:Name="tbxResult" Grid.Row="7" Grid.Column="1" Width="400"></TextBox>
+
+        </Grid>
+    </Grid>
+</Page>
